@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KWSP Contribution Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #2563eb;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #2563eb;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <div class="container mx-auto px-4 py-6 max-w-2xl">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-8">
+            <span class="text-xl font-semibold">KWSP Calculator</span>
+            <button class="text-2xl">☰</button>
+        </div>
+
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">KWSP Contribution Calculator</h1>
+
+        <!-- Calculator Form -->
+        <div class="space-y-6">
+            <div>
+                <label for="salary" class="block text-xl mb-2">Enter Monthly Salary (RM)</label>
+                <input type="number" id="salary" name="salary" 
+                       class="w-full p-3 text-lg border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                       placeholder="5000" required>
+            </div>
+
+            <div>
+                <label class="block text-xl mb-2">Set contribution rate manually?</label>
+                <div class="relative">
+                    <input type="text" id="rateDisplay" value="11% + 13%" readonly
+                           class="w-full p-3 text-lg border rounded-lg bg-gray-50" 
+                           onclick="document.getElementById('customRate').click()">
+                    <input type="checkbox" id="customRate" class="hidden">
+                </div>
+                <div id="rateInputs" class="hidden mt-4 space-y-4">
+                    <div>
+                        <label class="block text-sm text-gray-600">Employee Rate (%)</label>
+                        <input type="number" id="employeeRate" value="11" 
+                               class="w-full p-3 text-lg border rounded-lg">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-600">Employer Rate (%)</label>
+                        <input type="number" id="employerRate" value="13"
+                               class="w-full p-3 text-lg border rounded-lg">
+                    </div>
+                </div>
+            </div>
+
+            <button id="calculateBtn" 
+                    class="w-full bg-blue-600 text-white text-lg py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                Calculate
+            </button>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="hidden mt-8 space-y-6">
+            <div class="bg-white rounded-lg">
+                <div class="mb-6">
+                    <h2 class="text-xl font-semibold mb-2">Total Overall</h2>
+                    <div id="overallTotal" class="text-3xl font-bold text-blue-600"></div>
+                </div>
+
+                <h2 class="text-xl font-semibold mb-4">Contribution Breakdown</h2>
+                <div class="grid grid-cols-2 gap-8">
+                    <div id="accountBreakdown" class="space-y-3"></div>
+                    <div>
+                        <canvas id="distributionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projection Section -->
+            <div class="mt-8">
+                <h3 class="text-lg mb-4">Projection (optional)</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between text-sm text-gray-600">
+                        <span>1 month</span>
+                        <span id="monthsValue">12 months</span>
+                        <span>60 months</span>
+                    </div>
+                    <input type="range" id="monthsSlider" min="1" max="60" value="12"
+                           class="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer">
+                    <div id="projectionResults" class="mt-4 space-y-2"></div>
+                </div>
+            </div>
+
+            <div class="mt-4 text-sm text-gray-500">
+                <a href="#" class="text-blue-600">KWSP info</a>
+                <p class="mt-1">Projections are for illustrative purposes only</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-12 py-4 border-t text-sm text-gray-500">
+            <div class="flex justify-between items-center">
+                <p>Created by <a href="https://github.com/mrzahedlim" class="text-blue-600 hover:underline" target="_blank">@MrZahedLim</a></p>
+                <p>© 2024</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
