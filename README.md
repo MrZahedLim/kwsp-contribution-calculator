@@ -25,11 +25,12 @@ A modern, responsive web-based calculator for computing KWSP (EPF Malaysia) cont
 
 ## Live Demo
 
-[View Live Demo](#) <!-- Add your deployed URL here -->
+[View Live Demo](https://kwsp.zahirhalim.my/) <!-- Add your deployed URL here -->
 
 ## Screenshots
 
-[Add screenshots here]
+![image](https://github.com/user-attachments/assets/aa573115-f8f2-4b28-bf9e-f58e77b7d80f)
+
 
 ## Setup
 
